@@ -510,8 +510,224 @@ copy file yand sebelumnya didownload ke folder tersebut
 cp /root/franky/home.html /var/www/franky.c01.com
 cp /root/franky/index/php /var/www/franky.c01.com
 ```
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+Lakukan lynx pada Loguetown:
+```
+lynx www.franky.c01.com
+```
 Hasil: <br>
 
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal81.png) <br>
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
+
+## Soal 9
+
+Tambahkan di `franky.c01.com.conf`
+```
+<Directory /var/www/franky.c01.com>
+                 Options +FollowSymLinks -Multiviews
+                 AllowOverride All
+         </Directory>
+```
+Kemudian buat file `.htaccess` pada path `/var/www/franky.c01.com` yang isinya
+```
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^home$ index.php/home
+```
+Dan aktifkan module rewrite dengan command `a2enmod rewrite`
+
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+Lakukan lynx pada Loguetown:
+```
+lynx www.franky.c01.com/home
+```
+Hasil: <br>
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal91.png) <br>
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
+
+## Soal 10
+Pertama copy file yang di download ke `/var/www/super.franky.c01.com`
+```
+cp -r /root/super.franky/error /var/www/super.franky.c01.com
+cp -r /root/super.franky/public /var/www/super.franky.c01.com
+```
+Sama seperti pada nomor 9, pertama
+```
+cd /etc/apache2/sites-available
+```
+
+Kemudian `cp 000-default.conf super.franky.C01.com.conf`
+Setelah itu ubah
+```
+ ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/super.franky.c01.com
+        ServerName super.franky.c01.com
+        ServerAlias www.super.franky.c01.com
+```
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+Lakukan lynx pada Loguetown:
+```
+lynx www.super.franky.c01.com
+```
+## Soal 11
+
+Untuk directory listing tambahkan pada file conf:
+```
+<Directory /var/www/super.franky.c01.com/public>
+             Options +Indexes
+        </Directory>
+```
+
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+Lakukan lynx pada Loguetown:
+```
+lynx www.super.franky.c01.com/public
+```
+Hasil:
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal112.png)
+	
+## Soal 12
+
+Untuk soal ini cukup menambahkahkan line ini pada file conf:
+
+```
+        ErrorDocument 404 /error/404.html
+```
+
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+Kemudian lakukan lynx yang salah pada Loguetown 
+
+```
+lynx www.super.franky.c01.com/dwadawads
+```
+Hasil: <br>
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal122.png)
+
+## Soal 13
+
+Untuk directory alias tambahkan pada file conf:
+```
+<Directory /var/www/super.franky.c01.com/public/js>
+                 Options +Indexes
+        </Directory>
+        
+        Alias "/js" "/var/www/super.franky.c01.com/public/js"
+```
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+Kemudian lakukan lynx pada Loguetown 
+
+```
+lynx www.super.franky.c01.com/js
+```
+Hasil: <br>
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal132.png)
+
+## Soal 14 
+Pertama copy file yang telah di download ke folder
+```
+cp -r /root/general.mecha.franky/drag.wav /var/www/general.mecha.franky.c01.com/
+cp -r /root/general.mecha.franky/duck-duck-go.jpg /var/www/general.mecha.franky.c01.com/
+cp -r /root/general.mecha.franky/f1.png /var/www/general.mecha.franky.c01.com/
+cp -r /root/general.mecha.franky/funko-pop.jpg /var/www/general.mecha.franky.c011
+.com/
+```
+
+Kemudian buat file conf baru di `/etc/apache2/sites-available/` yaitu `general.mecha.franky.c01.com`
+
+Sesuaikan `DocumentRoot`, `ServerName`, dan `ServerAlias`.
+
+Kemudian ganti port di line pertama dari `80` menjadi `15000` dan tambahkan `15000` 
+```
+<VirtualHost *:15000 *:15500>
+```
+
+Di `/etc/apache2/ports.conf`  tambahkan 
+```
+Listen 15000
+Listen 15500
+```
+
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+Kemudian lakukan lynx pada Loguetown 
+
+```
+lynx www.general.mecha.franky.c01.com:15000
+```
+
+Hasil: <br>
+
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal142.png)
+
+## Soal 15
+Untuk mendapat akses ke `htpasswd` run command berikut
+```
+apt-get install apache2 apache2-utils -y
+```
+
+Untuk mengenerate file `.htpasswd` run command berikut
+```
+htpasswd -c /etc/apache2/.htpasswd luffy
+```
+
+Kemudian masukkan password `onepiece`
+
+Pada file conf general franky tambahkan
+```
+<Directory "/var/www/general.mecha.franky.c01.com">
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
+    
+```
+
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+
+Kemudian lakukan lynx pada Loguetown 
+
+```
+lynx www.general.mecha.franky.c01.com:15000
+```
+
+Hasil: <br>
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal152.png)
 
 
 
