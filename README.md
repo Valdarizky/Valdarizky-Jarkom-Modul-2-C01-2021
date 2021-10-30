@@ -168,6 +168,11 @@ www.super     IN   CNAME    super.franky.c01.com.
 
 service bind9 restart
 ```
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535288-4744fc7c-dd63-453a-899e-dc89f5f6a474.png)
+
+## Soal 3
+
 ## Soal 4
 
 Buka file pada:
@@ -225,6 +230,9 @@ ping www.franky.c01.com.
 ping super.franky.c01.com.
 ping www.super.franky.c01.com.
 ```
+
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535450-49740bca-4482-48b5-bc19-8452841ab908.png)
 
 
 
@@ -391,6 +399,9 @@ tulis di command line untuk melakukan ping
 ping mecha.franky.c01.com.
 ping www.mecha.franky.c01.com.
 ```
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535548-4e1684ce-3d00-4e96-a16f-21d7d48031f6.png)
+
 
 ## Soal 7
 
@@ -484,8 +495,6 @@ cp /root/franky/index/php /var/www/franky.c01.com
 ```
 Hasil: <br>
 
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal81.png) <br>
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
 
 
