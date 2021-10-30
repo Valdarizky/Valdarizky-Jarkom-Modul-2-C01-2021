@@ -108,31 +108,38 @@ iface eth0 inet static
 	gateway [Prefix IP].2.1
 ```
 
-Ketikkan iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
-Ketikkan command cat /etc/resolv.conf di Foosha<br>
-Ketikkan echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
+Ketikkan 
+```iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
+```
+Ketikkan 
+```command cat /etc/resolv.conf di Foosha<br>
+```
+Ketikkan 
+```echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
+```
 
 
-
-## Soal 1-4
+## Soal 2
 ##### ##EniesLobby
 
-- Domain
+- buat dan buka folder konfigurasi
 
-vim /etc/bind/named.conf.local
+> vim /etc/bind/named.conf.local
 
 isi:
+```
 zone "franky.c01.com" {
         type master;
         file "/etc/bind/kaizoku/franky.c01.com";
 };
+```
 
-
-mkdir /etc/bind/kaizoku
-
+- buat dan buka folder:
+```mkdir /etc/bind/kaizoku
 cp /etc/bind/db.local /etc/bind/kaizoku/franky.c01.com
-
 vim /etc/bind/kaizoku/franky.c01.com
+```
+
 isi:
 ```
 ;
@@ -158,10 +165,13 @@ www.super     IN   CNAME    super.franky.c01.com.
 
 service bind9 restart
 ```
--Reverse DNS
+## Soal 4
 
+Buka file pada:
+```
 vim /etc/bind/named.conf.local 
-isi:
+```
+Tambahkan konfigurasi seperti dibawah:
 ```
 zone "franky.c01.com" {
         type master;
@@ -174,8 +184,11 @@ zone "2.184.192.in-addr.arpa" {
 
 cp /etc/bind/db.local /etc/bind/kaizoku/2.184.192.in-addr.arpa
 ```
+buat dan buka file:
+```
 vim /etc/bind/kaizoku/2.184.192.in-addr.arpa
-isi:
+```
+Kemudian isi:
 ```;
 ; BIND data file for local loopback interface
 ;
@@ -196,26 +209,28 @@ $TTL    604800
 service bind9 restart
 
 ##### ##Alabasta & loguetown
+buka:
+```
 vim /etc/resolv.conf
-isi:
+```
+testing:
 ```
 nameserver 192.184.2.2 #IP EniesLobby
-```
-
 host -t PTR 192.184.2.2
 ping franky.c01.com.
 ping www.franky.c01.com.
 ping super.franky.c01.com.
 ping www.super.franky.c01.com.
-
+```
 
 
 
 ## Soal 5
-
+#### Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama
 ##### ##EniesLobby
-vim /etc/bind/named.conf.local
-isi:
+- Tambahkan konfigurasi pada:
+> vim /etc/bind/named.conf.local
+isikan :
 ```zone "franky.c01.com" {
     type master;
     notify yes;
@@ -231,8 +246,11 @@ zone "2.184.192.in-addr.arpa" {
 service bind9 restart
 ```
 ##### ##Water7
+- pada Water 7 bukak dan tambahkan:
+```
 vim /etc/bind/named.conf.local
-isi:
+```
+isikan:
 ```
 zone "franky.c01.com" {
     type slave;
@@ -249,17 +267,22 @@ nameserver 192.184.2.2 #IP EniesLobby
 nameserver 192.184.2.3 #IP Water7
 #nameserver 192.168.122.1
 ```
-**tulis di command line
+- tulis di command line
+```
 ping franky.c01.com.
 ping www.franky.c01.com.
 ping super.franky.c01.com.
-ping www.super.franky.c01.com.**
-
+ping www.super.franky.c01.com.
+```
 
 ## Soal 6
+#### Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo
+
 ##### ##EniesLobby
-vim /etc/bind/kaizoku/franky.c01.com
-isi:
+
+- Buka file konfigurasi pada:
+> vim /etc/bind/kaizoku/franky.c01.com
+isikan:
 ```;
 ; BIND data file for local loopback interface
 ;
@@ -284,8 +307,9 @@ vim /etc/bind/named.conf.options
 Kemudian comment dnssec-validation auto; dan tambahkan baris berikut pada /etc/bind/named.conf.options
 allow-query{any;};
 ```
-vim /etc/bind/named.conf.local
-isi:
+buka konfigurasi lagi pada:
+> vim /etc/bind/named.conf.local
+isikan:
 ```
 zone "franky.c01.com" {
     type master;
@@ -302,13 +326,17 @@ zone "2.184.192.in-addr.arpa" {
 service bind9 restart
 ```
 ##### ##Water7
-vim /etc/bind/named.conf.options
-Kemudian comment //dnssec-validation auto; dan tambahkan baris berikut pada /etc/bind/named.conf.options
+buka konfigurasi file:
+> vim /etc/bind/named.conf.options
 
-allow-query{any;};
+- Kemudian 
+> comment //dnssec-validation auto;
+- tambahkan baris berikut pada 
+> /etc/bind/named.conf.options allow-query{any;};
 
-vim /etc/bind/named.conf.local
-isi:
+- Buka konfigurasi file
+> vim /etc/bind/named.conf.local
+isikan:
 ```
 zone "franky.c01.com" {
     type slave;
@@ -321,11 +349,13 @@ zone "mecha.franky.c01.com" {
     file "/etc/bind/sunnygo/franky.c01.com";
 };
 ```
-
-mkdir /etc/bind/sunnygo
+buat dan tambahkan direktori file:
+```mkdir /etc/bind/sunnygo
 cp /etc/bind/db.local /etc/bind/sunnygo/franky.c01.com
-vim /etc/bind/sunnygo/franky.c01.com
-isi:
+```
+Lalu buka file konfigurasi:
+> vim /etc/bind/sunnygo/franky.c01.com
+isikan:
 ```;
 ; BIND data file for local loopback interface
 ;
@@ -345,20 +375,29 @@ service bind9 restart
 ```
 
 ##### ##Loguetown
-vim /etc/resolv.conf
-isi:
+Buka file konfigurasi:
+> vim /etc/resolv.conf
+isikan:
 ```
 nameserver 192.184.2.2 #IP EniesLobby
 nameserver 192.184.2.3 #IP Water7
 #nameserver 192.168.122.1
-
-tulis di command line
+```
+tulis di command line untuk melakukan ping
+```
 ping mecha.franky.c01.com.
 ping www.mecha.franky.c01.com.
 ```
 
 ## Soal 7
+
+#### Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Water7 dengan nama general.mecha.franky.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie
+
 ##### ##water7
+- buka dan tambahkan konfigurasi pada 
+> /etc/bind/sunnygo/mecha.franky.C01.com
+
+isikan:
 ```
 vim /etc/bind/sunnygo/franky.c01.com
 isi:
@@ -383,7 +422,7 @@ service bind9 restart
 ```
 
 ##### ##Loguetown
-**Tulis di command line**
+- Tulis di command line untuk testing dsb:
 ```
 ping general.mecha.franky.c01.com.
 ping www.general.mecha.franky.c01.com.
