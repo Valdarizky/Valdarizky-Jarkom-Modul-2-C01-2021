@@ -7,7 +7,8 @@
 - **Muhammad Valda Rizky Nur Firdaus** (05111940000115)
 
 # Soal
-Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi Raja Bajak Laut, Nami ingin membuat sebuah peta, bantu Nami untuk membuat peta berikut:
+Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi Raja Bajak Laut, Nami ingin membuat sebuah peta, bantu Nami untuk membuat peta berikut
+
 <p align="center">
   <img src="(https://user-images.githubusercontent.com/81211647/139531340-115e3dc7-0386-479c-9feb-300d0cbc3932.png" />
 </p>
