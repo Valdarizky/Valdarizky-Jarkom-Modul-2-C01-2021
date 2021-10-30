@@ -109,13 +109,16 @@ iface eth0 inet static
 ```
 
 Ketikkan 
-```iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
+```
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
 ```
 Ketikkan 
-```command cat /etc/resolv.conf di Foosha<br>
 ```
-Ketikkan 
-```echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
+command cat /etc/resolv.conf di Foosha<br>
+```
+Ketikkan:
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
 ```
 
 
