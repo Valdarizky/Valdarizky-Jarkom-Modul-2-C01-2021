@@ -460,6 +460,7 @@ ping www.general.mecha.franky.c01.com.
 ![image](https://user-images.githubusercontent.com/81211647/139535636-fd869984-faf0-49af-9555-b4f706cdd7a7.png)
 
 ## Soal 8
+#### Pada setiap soal setelah membuat file conf baru lakukan command a2ensite [Nama site]
 Sebagai persiapan untuk soal 8-17 pertama jalankan command command berikut: <br>
 ```
 apt-get install apache2 -y
@@ -730,7 +731,7 @@ Hasil: <br>
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal152.png)
 
 ## Soal 16
-
+Untuk soal ini saya tidak melakukan perubahan apa apa pada file, setelah di lynx langsung bisa.  
 Lakukan
 ```
 lynx 192.184.2.4
@@ -739,8 +740,25 @@ lynx 192.184.2.4
 Hasil:  
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
+## Soal 17
+#### Soal ini masih belum bisa, file tidak terdownload
+Tambahkan file `.htaccess` pada folder `/var/www/super.franky.c01.com`
+Yang isinya
+```
+RewriteEngine On
+RewriteRule (.*)franky(.*)(\.jpg|\.png|\.gif)$ http://super.franky.c01.com/publii
+c/images/franky.png [L,R=301]
+```
+Kemudian pada conf super franky tambahkan
+```
+<Directory /var/www/super.franky.c01.com>
+     Options +FollowSymLinks -Multiviews
+     AllowOverride All
+ </Directory>
+ ```
+ 
+ Hasil :
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal152.png)
 
-
-	
 	
 
