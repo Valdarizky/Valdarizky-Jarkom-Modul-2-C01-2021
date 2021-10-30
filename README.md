@@ -108,11 +108,11 @@ iface eth0 inet static
 	gateway [Prefix IP].2.1
 ```
 
-Ketikkan 
+Ketikkan:
 ```
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
 ```
-Ketikkan 
+Ketikkan:
 ```
 command cat /etc/resolv.conf di Foosha<br>
 ```
