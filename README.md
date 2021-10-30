@@ -121,6 +121,8 @@ Ketikkan:
 echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
 ```
 
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139534919-cb686ff5-90b6-441c-8ae8-03a43316385a.png)
 
 ## Soal 2
 ##### ##EniesLobby
