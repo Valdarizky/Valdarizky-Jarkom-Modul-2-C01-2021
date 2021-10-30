@@ -758,7 +758,7 @@ Kemudian pada conf super franky tambahkan
  ```
  
  Hasil :
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal152.png)
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal172.jpeg)
 
 	
 
