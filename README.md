@@ -729,6 +729,15 @@ Hasil: <br>
 
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal152.png)
 
+## Soal 16
+
+Lakukan
+```
+lynx 192.184.2.4
+```
+
+Hasil:  
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
 
 
