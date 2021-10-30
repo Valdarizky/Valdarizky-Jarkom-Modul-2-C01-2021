@@ -518,8 +518,40 @@ Hasil: <br>
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal91.png) <br>
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
+## Soal 10
 
+Sama seperti pada nomor 9, pertama
+```
+cd /etc/apache2/sites-available
+```
 
-	
+Kemudian `cp 000-default.conf super.franky.C01.com.conf`
+Setelah itu ubah
+```
+ ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/super.franky.c01.com
+        ServerName super.franky.c01.com
+        ServerAlias www.super.franky.c01.com
+```
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+## Soal 11
+
+Untuk directory listing tambahkan pada file conf:
+```
+<Directory /var/www/super.franky.c01.com/public>
+             Options +Indexes
+        </Directory>
+```
+
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+Hasil:
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal112.png)
 	
 
