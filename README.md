@@ -33,24 +33,26 @@ Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi 
   
 # Pembahasan Soal
 
-Script.sh
+isi Script.sh
 
 Foosa:
+```bash
 #!/bin/bash
 apt-get update
 apt-get upgrade
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.184.0.0/16
 cat /etc/resolv.conf
 echo nameserver 192.168.122.1 > /etc/resolv.conf
-
+```
 
 Lainnya:
+```bash
 #!/bin/bash
 echo nameserver 192.168.122.1 > /etc/resolv.conf 
 apt-get update
 apt-get install bind9 -y
 apt-get install dnsutils
-~                             
+```                             
 
 ## Soal 1
 EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, dan Skypie akan digunakan sebagai Web Server. Terdapat 2 Client yaitu Loguetown, dan Alabasta. Semua node terhubung pada router Foosha, sehingga dapat mengakses internet (1).
@@ -109,6 +111,9 @@ iface eth0 inet static
 Ketikkan iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
 Ketikkan command cat /etc/resolv.conf di Foosha<br>
 Ketikkan echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
+
+
+
 ## Soal 1-4
 ##### ##EniesLobby
 
