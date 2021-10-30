@@ -6,7 +6,7 @@
 - **Muhammad Valda Rizky Nur Firdaus** (05111940000115)
 
 # Pembahasan Soal
-## Soal 1
+
 Script.sh
 
 Foosa:
@@ -26,7 +26,7 @@ apt-get install bind9 -y
 apt-get install dnsutils
 ~                             
 
-No 1-5
+## Soal 1-4
 ##EniesLobby
 
 - Domain
@@ -46,7 +46,7 @@ cp /etc/bind/db.local /etc/bind/kaizoku/franky.c01.com
 
 vim /etc/bind/kaizoku/franky.c01.com
 isi:
-
+```
 ;
 ; BIND data file for local loopback interface
 ;
@@ -68,15 +68,13 @@ www.super     IN   CNAME    super.franky.c01.com.
 
 ~                                   
 
-
 service bind9 restart
-
-
-
+```
 -Reverse DNS
 
 vim /etc/bind/named.conf.local 
 isi:
+```
 zone "franky.c01.com" {
         type master;
         file "/etc/bind/kaizoku/franky.c01.com";
@@ -87,10 +85,10 @@ zone "2.184.192.in-addr.arpa" {
 };
 
 cp /etc/bind/db.local /etc/bind/kaizoku/2.184.192.in-addr.arpa
-
+```
 vim /etc/bind/kaizoku/2.184.192.in-addr.arpa
 isi:
-;
+```;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -103,17 +101,18 @@ $TTL    604800
 ;
 2.184.192.in-addr.arpa.       IN      NS      franky.c01.com.
 2	IN	PTR	franky.c01.com.
-
+```
 
 
 
 service bind9 restart
 
-## Alabasta & loguetown
+### Alabasta & loguetown
 vim /etc/resolv.conf
 isi:
+```
 nameserver 192.184.2.2 #IP EniesLobby
-
+```
 
 host -t PTR 192.184.2.2
 ping franky.c01.com.
@@ -124,12 +123,12 @@ ping www.super.franky.c01.com.
 
 
 
-Soal No 5
+##Soal 5
 
-##EniesLobby
+###EniesLobby
 vim /etc/bind/named.conf.local
 isi:
-zone "franky.c01.com" {
+```zone "franky.c01.com" {
     type master;
     notify yes;
     also-notify { 192.184.2.3; }; // Masukan IP Water7 tanpa tanda petik
@@ -142,35 +141,38 @@ zone "2.184.192.in-addr.arpa" {
 };
 
 service bind9 restart
-
-## Water7
+```
+### Water7
 vim /etc/bind/named.conf.local
 isi:
+```
 zone "franky.c01.com" {
     type slave;
     masters { 192.184.2.2; }; // Masukan IP EniesLobby tanpa tanda petik
     file "/var/lib/bind/franky.c01.com";
 };
+```
 
-##Loguetown
+###Loguetown
 vim /etc/resolv.conf
 isi:
+```
 nameserver 192.184.2.2 #IP EniesLobby
 nameserver 192.184.2.3 #IP Water7
 #nameserver 192.168.122.1
-
-tulis di command line
+```
+**tulis di command line
 ping franky.c01.com.
 ping www.franky.c01.com.
 ping super.franky.c01.com.
-ping www.super.franky.c01.com.
+ping www.super.franky.c01.com.**
 
 
-No 6
+##Soal 6
 ##EniesLobby
 vim /etc/bind/kaizoku/franky.c01.com
 isi:
-;
+```;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -193,9 +195,10 @@ mecha   IN     NS       ns1
 vim /etc/bind/named.conf.options
 Kemudian comment dnssec-validation auto; dan tambahkan baris berikut pada /etc/bind/named.conf.options
 allow-query{any;};
-
+```
 vim /etc/bind/named.conf.local
 isi:
+```
 zone "franky.c01.com" {
     type master;
     notify yes; 
@@ -209,8 +212,8 @@ zone "2.184.192.in-addr.arpa" {
 };  
 
 service bind9 restart
-
-##Water7
+```
+###Water7
 vim /etc/bind/named.conf.options
 Kemudian comment //dnssec-validation auto; dan tambahkan baris berikut pada /etc/bind/named.conf.options
 
@@ -218,7 +221,7 @@ allow-query{any;};
 
 vim /etc/bind/named.conf.local
 isi:
-
+```
 zone "franky.c01.com" {
     type slave;
     masters { 192.184.2.2; }; // Masukan IP EniesLobby tanpa tanda petik
@@ -229,13 +232,13 @@ zone "mecha.franky.c01.com" {
     type master;
     file "/etc/bind/sunnygo/franky.c01.com";
 };
-
+```
 
 mkdir /etc/bind/sunnygo
 cp /etc/bind/db.local /etc/bind/sunnygo/franky.c01.com
 vim /etc/bind/sunnygo/franky.c01.com
 isi:
-;
+```;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -253,7 +256,7 @@ www     IN     CNAME    mecha.franky.c01.com.
 service bind9 restart
 
 
-##Loguetown
+###Loguetown
 vim /etc/resolv.conf
 isi:
 nameserver 192.184.2.2 #IP EniesLobby
@@ -263,9 +266,11 @@ nameserver 192.184.2.3 #IP Water7
 tulis di command line
 ping mecha.franky.c01.com.
 ping www.mecha.franky.c01.com.
+```
 
-Nomor 7
-##water7
+##Soal 7
+###water7
+```
 vim /etc/bind/sunnygo/franky.c01.com
 isi:
 ;
@@ -288,7 +293,7 @@ www.general     IN   CNAME    general.mecha.franky.c01.com.
 service bind9 restart
 
 
-##Loguetown
+###Loguetown
 tulis di command line
 ping general.mecha.franky.c01.com.
 ping www.general.mecha.franky.c01.com.
@@ -333,8 +338,9 @@ cat htaccess.txt > /var/www/franky.c01.com/.htaccess
 cp -r /root/super.franky/error /var/www/super.franky.c01.com
 cp -r /root/super.franky/public /var/www/super.franky.c01.com
 service apache2 start
-
-Nomor 8-9
+```
+##Soal 8-9
+```
 wget zip pada root, unzip dan remove zip
 
 wget https://raw.githubusercontent.com/FeinardSlim/Praktikum-Modul-2-Jarkom/main/franky.zip
@@ -353,9 +359,11 @@ unzip super.franky.zip
 rm -r super.franky.zip
 
 cd /etc/apache2/sites-available
-copy file dari default ke file baru franky.c01.com.conf
-ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD
+```
 
+**copy file dari default ke file baru franky.c01.com.conf
+ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD**
+```
 <VirtualHost *:80>
         # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating
@@ -394,11 +402,12 @@ ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD
 </VirtualHost>
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
 
-Masuk ke /var/www/
+**Masuk ke /var/www/
 mkdir franky.c01.com
 vim .htaccess
-isi sebagai berikut untuk rewrite
+isi sebagai berikut untuk rewrite**
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -412,9 +421,10 @@ cp /root/franky/index/php /var/www/franky.c01.com
 service apache2 restart
 Nomor 10-13
 
-cd /etc/apache2/sites-available
+**cd /etc/apache2/sites-available
 copy file dari default ke file baru super.franky.c01.com.conf
-ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD untuk directory listing, alias dan error messagenya
+ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD untuk directory listing, alias dan error messagenya**
+```
 <VirtualHost *:80>
         # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating
@@ -460,14 +470,14 @@ ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD u
 </VirtualHost>
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-
-Masuk ke /var/www/
+```
+**Masuk ke /var/www/
 mkdir super.franky.c01.com
-copy file dari folder yang diextract 
-
+copy file dari folder yang diextract**
+```
 cp -r /root/super.franky/error /var/www/super.franky.c01.com
 cp -r /root/super.franky/public /var/www/super.franky.c01.com
-
+```
 service apache2 restart
 
 	
