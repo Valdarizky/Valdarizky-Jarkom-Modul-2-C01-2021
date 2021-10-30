@@ -168,6 +168,11 @@ www.super     IN   CNAME    super.franky.c01.com.
 
 service bind9 restart
 ```
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535288-4744fc7c-dd63-453a-899e-dc89f5f6a474.png)
+
+## Soal 3
+
 ## Soal 4
 
 Buka file pada:
@@ -226,6 +231,9 @@ ping super.franky.c01.com.
 ping www.super.franky.c01.com.
 ```
 
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535450-49740bca-4482-48b5-bc19-8452841ab908.png)
+
 
 
 ## Soal 5
@@ -277,6 +285,9 @@ ping www.franky.c01.com.
 ping super.franky.c01.com.
 ping www.super.franky.c01.com.
 ```
+-Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535714-920c96df-833b-4a81-bf85-da7a20ca34aa.png)
+
 
 ## Soal 6
 #### Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo
@@ -391,6 +402,9 @@ tulis di command line untuk melakukan ping
 ping mecha.franky.c01.com.
 ping www.mecha.franky.c01.com.
 ```
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535548-4e1684ce-3d00-4e96-a16f-21d7d48031f6.png)
+
 
 ## Soal 7
 
@@ -431,6 +445,9 @@ ping general.mecha.franky.c01.com.
 ping www.general.mecha.franky.c01.com.
 
 ```
+- Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139535636-fd869984-faf0-49af-9555-b4f706cdd7a7.png)
+
 ## Soal 8
 Sebagai persiapan untuk soal 8-17 pertama jalankan command command berikut: <br>
 ```
@@ -482,141 +499,12 @@ copy file yand sebelumnya didownload ke folder tersebut
 cp /root/franky/home.html /var/www/franky.c01.com
 cp /root/franky/index/php /var/www/franky.c01.com
 ```
-Jangan lupa restart apache2
-```
-service apache2 restart
-```
-
-Lakukan lynx pada Loguetown:
-```
-lynx www.franky.c01.com
-```
 Hasil: <br>
 
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal81.png) <br>
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
-## Soal 9
 
-Tambahkan di `franky.c01.com.conf`
-```
-<Directory /var/www/franky.c01.com>
-                 Options +FollowSymLinks -Multiviews
-                 AllowOverride All
-         </Directory>
-```
-Kemudian buat file `.htaccess` pada path `/var/www/franky.c01.com` yang isinya
-```
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^home$ index.php/home
-```
-Dan aktifkan module rewrite dengan command `a2enmod rewrite`
 
-Jangan lupa restart apache2
-```
-service apache2 restart
-```
-Lakukan lynx pada Loguetown:
-```
-lynx www.franky.c01.com/home
-```
-Hasil: <br>
 
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal91.png) <br>
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
-
-## Soal 10
-Pertama copy file yang di download ke `/var/www/super.franky.c01.com`
-```
-cp -r /root/super.franky/error /var/www/super.franky.c01.com
-cp -r /root/super.franky/public /var/www/super.franky.c01.com
-```
-Sama seperti pada nomor 9, pertama
-```
-cd /etc/apache2/sites-available
-```
-
-Kemudian `cp 000-default.conf super.franky.C01.com.conf`
-Setelah itu ubah
-```
- ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/super.franky.c01.com
-        ServerName super.franky.c01.com
-        ServerAlias www.super.franky.c01.com
-```
-Jangan lupa restart apache2
-```
-service apache2 restart
-```
-
-Lakukan lynx pada Loguetown:
-```
-lynx www.super.franky.c01.com
-```
-## Soal 11
-
-Untuk directory listing tambahkan pada file conf:
-```
-<Directory /var/www/super.franky.c01.com/public>
-             Options +Indexes
-        </Directory>
-```
-
-Jangan lupa restart apache2
-```
-service apache2 restart
-```
-
-Lakukan lynx pada Loguetown:
-```
-lynx www.super.franky.c01.com/public
-```
-Hasil:
-
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal112.png)
 	
-## Soal 12
-
-Untuk soal ini cukup menambahkahkan line ini pada file conf:
-
-```
-        ErrorDocument 404 /error/404.html
-```
-
-Jangan lupa restart apache2
-```
-service apache2 restart
-```
-Kemudian lakukan lynx yang salah pada Loguetown 
-
-```
-lynx www.super.franky.c01.com/dwadawads
-```
-Hasil: <br>
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal122.png)
-
-## Soal 13
-
-Untuk directory alias tambahkan pada file conf:
-```
-<Directory /var/www/super.franky.c01.com/public/js>
-                 Options +Indexes
-        </Directory>
-        
-        Alias "/js" "/var/www/super.franky.c01.com/public/js"
-```
-Jangan lupa restart apache2
-```
-service apache2 restart
-```
-
-Kemudian lakukan lynx pada Loguetown 
-
-```
-lynx www.super.franky.c01.com/js
-```
-Hasil: <br>
-
-![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal132.png)
+	
 
