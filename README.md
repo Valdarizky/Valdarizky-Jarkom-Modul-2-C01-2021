@@ -27,7 +27,7 @@ apt-get install dnsutils
 ~                             
 
 ## Soal 1-4
-##EniesLobby
+### ##EniesLobby
 
 - Domain
 
@@ -107,7 +107,7 @@ $TTL    604800
 
 service bind9 restart
 
-### Alabasta & loguetown
+### ##Alabasta & loguetown
 vim /etc/resolv.conf
 isi:
 ```
@@ -123,9 +123,9 @@ ping www.super.franky.c01.com.
 
 
 
-##Soal 5
+## Soal 5
 
-###EniesLobby
+### ##EniesLobby
 vim /etc/bind/named.conf.local
 isi:
 ```zone "franky.c01.com" {
@@ -142,7 +142,7 @@ zone "2.184.192.in-addr.arpa" {
 
 service bind9 restart
 ```
-### Water7
+### ##Water7
 vim /etc/bind/named.conf.local
 isi:
 ```
@@ -153,7 +153,7 @@ zone "franky.c01.com" {
 };
 ```
 
-###Loguetown
+### ##Loguetown
 vim /etc/resolv.conf
 isi:
 ```
@@ -168,8 +168,8 @@ ping super.franky.c01.com.
 ping www.super.franky.c01.com.**
 
 
-##Soal 6
-##EniesLobby
+## Soal 6
+### ##EniesLobby
 vim /etc/bind/kaizoku/franky.c01.com
 isi:
 ```;
@@ -213,7 +213,7 @@ zone "2.184.192.in-addr.arpa" {
 
 service bind9 restart
 ```
-###Water7
+### ##Water7
 vim /etc/bind/named.conf.options
 Kemudian comment //dnssec-validation auto; dan tambahkan baris berikut pada /etc/bind/named.conf.options
 
@@ -268,8 +268,8 @@ ping mecha.franky.c01.com.
 ping www.mecha.franky.c01.com.
 ```
 
-##Soal 7
-###water7
+## Soal 7
+### ##water7
 ```
 vim /etc/bind/sunnygo/franky.c01.com
 isi:
@@ -339,7 +339,7 @@ cp -r /root/super.franky/error /var/www/super.franky.c01.com
 cp -r /root/super.franky/public /var/www/super.franky.c01.com
 service apache2 start
 ```
-##Soal 8-9
+## Soal 8-9
 ```
 wget zip pada root, unzip dan remove zip
 
@@ -419,7 +419,8 @@ terakhir copy file dari folder franky ke /var/www/…
 cp /root/franky/home.html /var/www/franky.c01.com
 cp /root/franky/index/php /var/www/franky.c01.com
 service apache2 restart
-Nomor 10-13
+
+## Soal 10-13
 
 **cd /etc/apache2/sites-available
 copy file dari default ke file baru super.franky.c01.com.conf
