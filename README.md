@@ -430,43 +430,6 @@ service bind9 restart
 ping general.mecha.franky.c01.com.
 ping www.general.mecha.franky.c01.com.
 
-
-echo nameserver 192.168.122.1 > /etc/resolv.conf
-apt-get install apache2 -y
-apt-get install libapache2-mod-php7.0 -y
-apt-get install php -y
-apt-get install unzip -y
-apt-get install wget -y
-service apache2 start
-
-wget https://raw.githubusercontent.com/FeinardSlim/Praktikum-Modul-2-Jarkom/main/franky.zip
-
-wget https://raw.githubusercontent.com/FeinardSlim/Praktikum-Modul-2-Jarkom/main/general.mecha.franky.zip
-
-wget https://raw.githubusercontent.com/FeinardSlim/Praktikum-Modul-2-Jarkom/main/super.franky.zip
-
-unzip franky.zip
-rm -r franky.zip
-
-unzip general.mecha.franky.zip
-rm - r general.mecha.franky.zip
-
-unzip super.franky.zip
-rm -r super.franky.zip
-
-cp franky.txt /etc/apache2/sites-available/franky.c01.com.conf
-cp superfranky.txt /etc/apache2/sites-available/super.franky.c01.com.conf
-
-mkdir /var/www/franky.c01.com
-mkdir /var/www/super.franky.c01.com
-
-cp /root/franky/home.html /var/www/franky.c01.com
-cp /root/franky/index/php /var/www/franky.c01.com
-cat htaccess.txt > /var/www/franky.c01.com/.htaccess
-
-cp -r /root/super.franky/error /var/www/super.franky.c01.com
-cp -r /root/super.franky/public /var/www/super.franky.c01.com
-service apache2 start
 ```
 ## Soal 8-9
 ```
