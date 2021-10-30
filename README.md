@@ -9,9 +9,7 @@
 # Soal
 Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi Raja Bajak Laut, Nami ingin membuat sebuah peta, bantu Nami untuk membuat peta berikut
 
-<p align="center">
-  <img src="(https://user-images.githubusercontent.com/81211647/139531340-115e3dc7-0386-479c-9feb-300d0cbc3932.png" />
-</p>
+![image](https://user-images.githubusercontent.com/81211647/139531843-69b94ae7-b163-4983-a1f6-560ab99a808e.png)
 
 - EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, dan Skypie akan digunakan sebagai Web Server. Terdapat 2 Client yaitu Loguetown, dan Alabasta. Semua node terhubung pada router Foosha, sehingga dapat mengakses internet.
 - Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Kalian diminta Luffy untuk membuat website utama dengan mengakses franky.yyy.com dengan alias www.franky.yyy.com pada folder kaizoku. 
