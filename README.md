@@ -486,6 +486,11 @@ Jangan lupa restart apache2
 ```
 service apache2 restart
 ```
+
+Lakukan lynx pada Loguetown:
+```
+lynx www.franky.c01.com
+```
 Hasil: <br>
 
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal81.png) <br>
@@ -512,7 +517,10 @@ Jangan lupa restart apache2
 ```
 service apache2 restart
 ```
-
+Lakukan lynx pada Loguetown:
+```
+lynx www.franky.c01.com/home
+```
 Hasil: <br>
 
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal91.png) <br>
@@ -537,6 +545,11 @@ Jangan lupa restart apache2
 ```
 service apache2 restart
 ```
+
+Lakukan lynx pada Loguetown:
+```
+lynx www.super.franky.c01.com
+```
 ## Soal 11
 
 Untuk directory listing tambahkan pada file conf:
@@ -550,8 +563,27 @@ Jangan lupa restart apache2
 ```
 service apache2 restart
 ```
+
+Lakukan lynx pada Loguetown:
+```
+lynx www.super.franky.c01.com/public
+```
 Hasil:
 
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal112.png)
 	
+## Soal 12
 
+Untuk soal ini cukup menambahkahkan line ini pada file conf:
+
+```
+        ErrorDocument 404 /error/404.html
+```
+
+Kemudian lakukan lynx yang salah pada Loguetown 
+
+```
+lynx www.super.franky.c01.com/dwadawads
+```
+Hasil:
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal122.png)
