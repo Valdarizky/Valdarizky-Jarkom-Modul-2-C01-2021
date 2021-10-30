@@ -431,9 +431,17 @@ ping general.mecha.franky.c01.com.
 ping www.general.mecha.franky.c01.com.
 
 ```
-## Soal 8-9
+## Soal 8
+Sebagai persiapan untuk soal 8-17 pertama jalankan command command berikut: <br>
 ```
-wget zip pada root, unzip dan remove zip
+apt-get install apache2 -y
+apt-get install libapache2-mod-php7.0 -y
+apt-get install php -y
+apt-get install apache2 apache2-utils -y
+apt-get install unzip -y
+apt-get install wget -y
+service apache2 start
+
 
 wget https://raw.githubusercontent.com/FeinardSlim/Praktikum-Modul-2-Jarkom/main/franky.zip
 
@@ -450,129 +458,19 @@ rm - r general.mecha.franky.zip
 unzip super.franky.zip
 rm -r super.franky.zip
 
+```
+
+Command-command tersebut akan menginstall apache, php, wget, dan mendownload file dari soal. <br>
+
+Untuk membuat web server pertama lakukan
+```
 cd /etc/apache2/sites-available
 ```
 
-**copy file dari default ke file baru franky.c01.com.conf
-ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD**
-```
-<VirtualHost *:80>
-        # The ServerName directive sets the request scheme, hostname and port that
-        # the server uses to identify itself. This is used when creating
-        # redirection URLs. In the context of virtual hosts, the ServerName
-        # specifies what hostname must appear in the request's Host: header to
-        # match this virtual host. For the default virtual host (this file) this
-        # value is not decisive as it is used as a last resort host regardless.
-        # However, you must set it for any further virtual host explicitly.
-        #ServerName www.example.com
-
-        ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/franky.c01.com
-        ServerName franky.c01.com
-        ServerAlias www.franky.c01.com
-
-         <Directory /var/www/franky.c01.com>
-                 Options +FollowSymLinks -Multiviews
-                 AllowOverride All
-         </Directory>
-
-        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
-        # error, crit, alert, emerg.
-        # It is also possible to configure the loglevel for particular
-        # modules, e.g.
-        #LogLevel info ssl:warn
-
-                ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-        # For most configuration files from conf-available/, which are
-        # enabled or disabled at a global level, it is possible to
-        # include a line for only one particular virtual host. For example the
-        # following line enables the CGI configuration for this host only
-        # after it has been globally disabled with "a2disconf".
-        #Include conf-available/serve-cgi-bin.conf
-</VirtualHost>
-
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-```
-
-**Masuk ke /var/www/
-mkdir franky.c01.com
-vim .htaccess
-isi sebagai berikut untuk rewrite**
-
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^home$ index.php/home
-
-kemudian a2enmod untuk enable modif
-terakhir copy file dari folder franky ke /var/www/…
-
-cp /root/franky/home.html /var/www/franky.c01.com
-cp /root/franky/index/php /var/www/franky.c01.com
-service apache2 restart
-
-## Soal 10-13
-
-**cd /etc/apache2/sites-available
-copy file dari default ke file baru super.franky.c01.com.conf
-ganti DocumentRoot, ServerName dan ServerAlias dan tambahkan tulisan yang BOLD untuk directory listing, alias dan error messagenya**
-```
-<VirtualHost *:80>
-        # The ServerName directive sets the request scheme, hostname and port that
-        # the server uses to identify itself. This is used when creating
-        # redirection URLs. In the context of virtual hosts, the ServerName
-        # specifies what hostname must appear in the request's Host: header to
-        # match this virtual host. For the default virtual host (this file) this
-        # value is not decisive as it is used as a last resort host regardless.
-        # However, you must set it for any further virtual host explicitly.
-        #ServerName www.example.com
+Kemudian copy template dari file 000-default ke file baru `cp 000-default.conf franky.C01.com.conf` <br>
 
 
-         ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/super.franky.c01.com
-        ServerName super.franky.c01.com
-        ServerAlias www.super.franky.c01.com
 
-        <Directory /var/www/super.franky.c01.com/public>
-             Options +Indexes
-        </Directory>
-
-        <Directory /var/www/super.franky.c01.com/public/js>
-                 Options +Indexes
-        </Directory>
-        ErrorDocument 404 /error/404.html
-        Alias "/js" "/var/www/super.franky.c01.com/public/js"
-
-
-        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
-        # error, crit, alert, emerg.
-        # It is also possible to configure the loglevel for particular
-        # modules, e.g.
-        #LogLevel info ssl:warn
-
-                ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-        # For most configuration files from conf-available/, which are
-        # enabled or disabled at a global level, it is possible to
-        # include a line for only one particular virtual host. For example the
-        # following line enables the CGI configuration for this host only
-        # after it has been globally disabled with "a2disconf".
-        #Include conf-available/serve-cgi-bin.conf
-</VirtualHost>
-
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-```
-**Masuk ke /var/www/
-mkdir super.franky.c01.com
-copy file dari folder yang diextract**
-```
-cp -r /root/super.franky/error /var/www/super.franky.c01.com
-cp -r /root/super.franky/public /var/www/super.franky.c01.com
-
-service apache2 restart
-```
 	
 	
 
