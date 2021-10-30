@@ -121,8 +121,6 @@ Ketikkan:
 echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
 ```
 
-- Bukti SS:
-![image](https://user-images.githubusercontent.com/81211647/139534919-cb686ff5-90b6-441c-8ae8-03a43316385a.png)
 
 ## Soal 2
 ##### ##EniesLobby
@@ -470,6 +468,23 @@ cd /etc/apache2/sites-available
 ```
 
 Kemudian copy template dari file 000-default ke file baru `cp 000-default.conf franky.C01.com.conf` <br>
+Kemudian ubah DocumentRoot, nama dan alias:
+```
+ ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/franky.c01.com
+        ServerName franky.c01.com
+        ServerAlias www.franky.c01.com
+```
+
+Sebelumnya buatlah folder `franky.c01.com` pada path `/var/www` kemudian
+copy file yand sebelumnya didownload ke folder tersebut
+```
+cp /root/franky/home.html /var/www/franky.c01.com
+cp /root/franky/index/php /var/www/franky.c01.com
+```
+Hasil: <br>
+
+
 
 
 
