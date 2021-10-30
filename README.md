@@ -174,6 +174,15 @@ service bind9 restart
 ![image](https://user-images.githubusercontent.com/81211647/139535288-4744fc7c-dd63-453a-899e-dc89f5f6a474.png)
 
 ## Soal 3
+#### Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie
+
+tambahkan konfigurasi pada /etc/bind/kaizoku/franky.c01.com
+```
+www.super     IN   CNAME    super.franky.c01.com.
+//@    		 IN        A   192.184.2.4;IP Skypie
+```
+-Bukti SS:
+![image](https://user-images.githubusercontent.com/81211647/139537463-3421c869-48e9-4f42-bdf8-871c048deeb9.png)
 
 ## Soal 4
 
