@@ -7,8 +7,4 @@
 
 # Pembahasan Soal
 ## Soal 1
-aaaaaaaaaaaaaaaaa <br>
-
-**Cara pengerjaan**: aaaaaaa
-**Screenshot**: <br>
 
