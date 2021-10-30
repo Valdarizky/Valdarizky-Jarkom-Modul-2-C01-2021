@@ -484,6 +484,8 @@ cp /root/franky/index/php /var/www/franky.c01.com
 ```
 Hasil: <br>
 
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal81.png) <br>
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
 
 
