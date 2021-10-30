@@ -30,6 +30,7 @@ Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi 
 - Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melalui website www.super.franky.yyy.com, dan dikarenakan pengunjung web server pasti akan bingung dengan randomnya images yang ada, maka Franky juga meminta untuk mengganti request gambar yang memiliki substring “franky” akan diarahkan menuju franky.png. Maka bantulah Luffy untuk membuat konfigurasi dns dan web server ini!
 
 
+  
 # Pembahasan Soal
 
 Script.sh
@@ -51,6 +52,63 @@ apt-get install bind9 -y
 apt-get install dnsutils
 ~                             
 
+## Soal 1
+EniesLobby akan dijadikan sebagai DNS Master, Water7 akan dijadikan DNS Slave, dan Skypie akan digunakan sebagai Web Server. Terdapat 2 Client yaitu Loguetown, dan Alabasta. Semua node terhubung pada router Foosha, sehingga dapat mengakses internet (1).
+
+Dilakukan konfigurasi terlebih dahulu seperti yang ada pada modul gns3
+[Prefix IP]=192.184
+
+### Foosha
+```bash
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address [Prefix IP].1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address [Prefix IP].2.1
+	netmask 255.255.255.0
+```bash
+### Loguetown
+```bash
+auto eth0
+iface eth0 inet static
+	address [Prefix IP].1.2
+	netmask 255.255.255.0
+	gateway [Prefix IP].1.1
+```
+### Alabasta
+```bash
+auto eth0
+iface eth0 inet static
+	address [Prefix IP].1.3
+	netmask 255.255.255.0
+	gateway [Prefix IP].1.1
+```
+### EniesLobby
+```bash
+auto eth0
+iface eth0 inet static
+	address [Prefix IP].2.2
+	netmask 255.255.255.0
+	gateway [Prefix IP].2.1
+```
+### Water7
+```bash
+auto eth0
+iface eth0 inet static
+	address [Prefix IP].2.3
+	netmask 255.255.255.0
+	gateway [Prefix IP].2.1
+```
+
+Ketikkan iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s [Prefix IP].0.0/16 pada router Foosha<br>
+Ketikkan command cat /etc/resolv.conf di Foosha<br>
+Ketikkan echo nameserver 192.168.122.1 > /etc/resolv.conf. di semua node<br>
 ## Soal 1-4
 ##### ##EniesLobby
 
