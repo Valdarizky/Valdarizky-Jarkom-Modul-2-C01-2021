@@ -527,7 +527,11 @@ Hasil: <br>
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal82.png)
 
 ## Soal 10
-
+Pertama copy file yang di download ke `/var/www/super.franky.c01.com`
+```
+cp -r /root/super.franky/error /var/www/super.franky.c01.com
+cp -r /root/super.franky/public /var/www/super.franky.c01.com
+```
 Sama seperti pada nomor 9, pertama
 ```
 cd /etc/apache2/sites-available
@@ -580,10 +584,39 @@ Untuk soal ini cukup menambahkahkan line ini pada file conf:
         ErrorDocument 404 /error/404.html
 ```
 
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
 Kemudian lakukan lynx yang salah pada Loguetown 
 
 ```
 lynx www.super.franky.c01.com/dwadawads
 ```
-Hasil:
+Hasil: <br>
 ![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal122.png)
+
+## Soal 13
+
+Untuk directory alias tambahkan pada file conf:
+```
+<Directory /var/www/super.franky.c01.com/public/js>
+                 Options +Indexes
+        </Directory>
+        
+        Alias "/js" "/var/www/super.franky.c01.com/public/js"
+```
+Jangan lupa restart apache2
+```
+service apache2 restart
+```
+
+Kemudian lakukan lynx pada Loguetown 
+
+```
+lynx www.super.franky.c01.com/js
+```
+Hasil: <br>
+
+![ImgSrc](https://github.com/Valdarizky/Valdarizky-Jarkom-Modul-2-C01-2021/blob/main/images/soal132.png)
+
