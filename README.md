@@ -27,7 +27,7 @@ apt-get install dnsutils
 ~                             
 
 ## Soal 1-4
-### ##EniesLobby
+##### ##EniesLobby
 
 - Domain
 
@@ -107,7 +107,7 @@ $TTL    604800
 
 service bind9 restart
 
-### ##Alabasta & loguetown
+##### ##Alabasta & loguetown
 vim /etc/resolv.conf
 isi:
 ```
@@ -125,7 +125,7 @@ ping www.super.franky.c01.com.
 
 ## Soal 5
 
-### ##EniesLobby
+##### ##EniesLobby
 vim /etc/bind/named.conf.local
 isi:
 ```zone "franky.c01.com" {
@@ -142,7 +142,7 @@ zone "2.184.192.in-addr.arpa" {
 
 service bind9 restart
 ```
-### ##Water7
+##### ##Water7
 vim /etc/bind/named.conf.local
 isi:
 ```
@@ -153,7 +153,7 @@ zone "franky.c01.com" {
 };
 ```
 
-### ##Loguetown
+##### ##Loguetown
 vim /etc/resolv.conf
 isi:
 ```
@@ -169,7 +169,7 @@ ping www.super.franky.c01.com.**
 
 
 ## Soal 6
-### ##EniesLobby
+##### ##EniesLobby
 vim /etc/bind/kaizoku/franky.c01.com
 isi:
 ```;
@@ -213,7 +213,7 @@ zone "2.184.192.in-addr.arpa" {
 
 service bind9 restart
 ```
-### ##Water7
+##### ##Water7
 vim /etc/bind/named.conf.options
 Kemudian comment //dnssec-validation auto; dan tambahkan baris berikut pada /etc/bind/named.conf.options
 
@@ -254,11 +254,12 @@ $TTL    604800
 www     IN     CNAME    mecha.franky.c01.com.
 
 service bind9 restart
+```
 
-
-###Loguetown
+##### ##Loguetown
 vim /etc/resolv.conf
 isi:
+```
 nameserver 192.184.2.2 #IP EniesLobby
 nameserver 192.184.2.3 #IP Water7
 #nameserver 192.168.122.1
@@ -269,7 +270,7 @@ ping www.mecha.franky.c01.com.
 ```
 
 ## Soal 7
-### ##water7
+##### ##water7
 ```
 vim /etc/bind/sunnygo/franky.c01.com
 isi:
@@ -291,15 +292,13 @@ general   IN      A       192.184.2.4;IP Skypie
 www.general     IN   CNAME    general.mecha.franky.c01.com.
 
 service bind9 restart
+```
 
-
-###Loguetown
-tulis di command line
+##### ##Loguetown
+**Tulis di command line**
+```
 ping general.mecha.franky.c01.com.
 ping www.general.mecha.franky.c01.com.
-
-
-
 
 
 echo nameserver 192.168.122.1 > /etc/resolv.conf
@@ -478,9 +477,9 @@ copy file dari folder yang diextract**
 ```
 cp -r /root/super.franky/error /var/www/super.franky.c01.com
 cp -r /root/super.franky/public /var/www/super.franky.c01.com
-```
-service apache2 restart
 
+service apache2 restart
+```
 	
 	
 
